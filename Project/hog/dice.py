@@ -47,7 +47,7 @@ def make_test_dice(*outcomes):
         assert type(o) == int and o >= 1, 'Outcome is not a positive integer'
     index = len(outcomes) - 1
     def dice():
-        nonlocal index
+        nonlocal index # reads the outer index
         index = (index + 1) % len(outcomes)
         return outcomes[index]
     return dice

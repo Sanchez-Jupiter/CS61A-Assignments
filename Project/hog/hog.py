@@ -22,6 +22,16 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    isSowsad, sum = 0, 0
+    for i in range(num_rolls):
+        res = dice()
+        sum += res
+        if(res == 1):
+            isSowsad = 1
+    if(isSowsad):
+        return 1
+    else:
+        return sum
     # END PROBLEM 1
 
 
