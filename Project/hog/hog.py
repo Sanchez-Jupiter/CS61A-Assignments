@@ -166,6 +166,21 @@ def play(strategy0, strategy1, update,
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    '''
+    while(score0 < goal and score1 < goal):
+        score0 = update(strategy0(score0, score1), score0, score1, dice)
+        score1 = update(strategy1(score1, score0), score1, score0, dice)
+        这样写有一个潜在的逻辑问题：
+        while 条件只在一轮开始时检查。如果玩家 0 这一步就达到了 goal，玩家 1 仍然会再走一步。
+        假如玩家 1 这一步也达到了 goal，最终返回的两个分数就都 ≥ goal，游戏结果就不再是“先到者胜”了。
+    '''
+    while score0 < goal and score1 < goal:
+        if who == 0:
+            score0 = update(strategy0(score0, score1), score0, score1, dice)
+        else:
+            score1 = update(strategy1(score1, score0), score1, score0, dice)
+        who = 1 - who
+ 
     # END PROBLEM 5
     return score0, score1
 
